@@ -1,0 +1,272 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-25 13:25-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: SRH/dashboard.py:14
+msgid "Admin central"
+msgstr ""
+
+#: SRH/dashboard.py:19
+msgid "Administration"
+msgstr "Administración"
+
+#: SRH/dashboard.py:24
+msgid "Applications"
+msgstr "Aplicaciones"
+
+#: SRH/dashboard.py:32
+msgid "Admin"
+msgstr "Admin"
+
+#: SRH/dashboard.py:39
+msgid "Apps"
+msgstr "Aplicaciones"
+
+#: SRH/dashboard.py:46
+msgid "Recent Actions"
+msgstr "Acciones recientes"
+
+#: catalog/models.py:8 catalog/models.py:11 cv/models.py:13
+msgid "Nationality"
+msgstr "Nacionalidad"
+
+#: catalog/models.py:12
+msgid "Nationalities"
+msgstr "Nacionalidades"
+
+#: catalog/models.py:18
+msgid "Document"
+msgstr "Documento"
+
+#: catalog/models.py:21 cv/models.py:14
+msgid "Document type"
+msgstr "Tipo de documento"
+
+#: catalog/models.py:22
+msgid "Document types"
+msgstr "Tipos de documentos"
+
+#: catalog/models.py:29
+msgid "Male"
+msgstr "Varon"
+
+#: catalog/models.py:30
+msgid "Female"
+msgstr "Mujer"
+
+#: catalog/models.py:32 catalog/models.py:35 cv/models.py:16
+msgid "Gender"
+msgstr "Genero"
+
+#: catalog/models.py:36
+msgid "Genders"
+msgstr "Generos"
+
+#: catalog/models.py:42
+msgid "State"
+msgstr "Estado"
+
+#: catalog/models.py:45 cv/models.py:17
+msgid "Civil state"
+msgstr "Estado civil"
+
+#: catalog/models.py:46
+msgid "Civil states"
+msgstr "Estados civiles"
+
+#: catalog/models.py:52 catalog/models.py:103 catalog/models.py:106
+#: cv/models.py:84
+msgid "Level"
+msgstr "Nivel"
+
+#: catalog/models.py:55 cv/models.py:34
+msgid "Education level"
+msgstr "Nivel de educación"
+
+#: catalog/models.py:56
+msgid "Education levels"
+msgstr "Niveles de educación"
+
+#: catalog/models.py:62 catalog/models.py:65 cv/models.py:35
+msgid "Grade"
+msgstr "Grado"
+
+#: catalog/models.py:66
+msgid "Grades"
+msgstr "Grados"
+
+#: catalog/models.py:72
+msgid "Name"
+msgstr "Nombre"
+
+#: catalog/models.py:75 cv/models.py:53
+msgid "Industry"
+msgstr "Industria"
+
+#: catalog/models.py:76
+msgid "Industries"
+msgstr "Industrias"
+
+#: catalog/models.py:82 catalog/models.py:85
+msgid "Lang"
+msgstr "Lengua"
+
+#: catalog/models.py:86
+msgid "Langs"
+msgstr "Lenguas"
+
+#: catalog/models.py:98
+msgid "Basic"
+msgstr "Basico"
+
+#: catalog/models.py:99
+msgid "Medium"
+msgstr "Medio"
+
+#: catalog/models.py:100
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: catalog/models.py:107
+msgid "Levels"
+msgstr "Niveles"
+
+#: cv/models.py:10 cv/models.py:32 cv/models.py:50 cv/models.py:69
+#: cv/models.py:82 cv/models.py:91
+msgid "User"
+msgstr "Usuario"
+
+#: cv/models.py:11 cv/models.py:71
+msgid "Names"
+msgstr "Nombres"
+
+#: cv/models.py:12
+msgid "Last names"
+msgstr "Apellidos"
+
+#: cv/models.py:15
+msgid "Document number"
+msgstr "Numero de documento"
+
+#: cv/models.py:18 cv/models.py:72
+msgid "Phone"
+msgstr "Telefono"
+
+#: cv/models.py:19
+msgid "Mobile"
+msgstr "Celular"
+
+#: cv/models.py:20
+msgid "Birth date"
+msgstr "Fecha nacimiento"
+
+#: cv/models.py:21
+msgid "Address"
+msgstr "Dirección"
+
+#: cv/models.py:22
+msgid "Image"
+msgstr "Imagen"
+
+#: cv/models.py:25
+msgid "Personal Info"
+msgstr "Información personal"
+
+#: cv/models.py:26
+msgid "Personal Infos"
+msgstr "Datos personal"
+
+#: cv/models.py:33
+msgid "Institution"
+msgstr "Institución"
+
+#: cv/models.py:36 cv/models.py:55
+msgid "Country"
+msgstr "País"
+
+#: cv/models.py:37 cv/models.py:56
+msgid "City"
+msgstr "Ciudad"
+
+#: cv/models.py:38 cv/models.py:57
+msgid "Start date"
+msgstr "Fecha inicio"
+
+#: cv/models.py:39 cv/models.py:58
+msgid "End date"
+msgstr "Fecha final"
+
+#: cv/models.py:40
+msgid "Study here today"
+msgstr "Actualmente estudio aca"
+
+#: cv/models.py:43
+msgid "Formation"
+msgstr "Formación"
+
+#: cv/models.py:44
+msgid "Formations"
+msgstr "Formaciones"
+
+#: cv/models.py:51
+msgid "Position"
+msgstr "Posición"
+
+#: cv/models.py:52 cv/models.py:70
+msgid "Company"
+msgstr "compañia"
+
+#: cv/models.py:54 cv/models.py:92
+msgid "Description"
+msgstr "Descripción"
+
+#: cv/models.py:59
+msgid "Work here today"
+msgstr "Actualmente trabajo aca"
+
+#: cv/models.py:62
+msgid "Experience"
+msgstr "Experiencia"
+
+#: cv/models.py:63
+msgid "Experiences"
+msgstr "Experiencias"
+
+#: cv/models.py:75
+msgid "Reference"
+msgstr "Referencia"
+
+#: cv/models.py:76
+msgid "References"
+msgstr "Referencias"
+
+#: cv/models.py:83 cv/models.py:87
+msgid "Language"
+msgstr "Idioma"
+
+#: cv/models.py:88
+msgid "Languages"
+msgstr "Idiomas"
+
+#: cv/models.py:95
+msgid "Skill"
+msgstr "Destreza"
+
+#: cv/models.py:96
+msgid "Skills"
+msgstr "Destrezas"

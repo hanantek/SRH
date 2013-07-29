@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+[[ title ]]
+{% endblock title %}
+
+{% block header_extra %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/app.css"/>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+{% endblock header_extra %}
+
+{% load socialaccount %}
+
+{% block content %}
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#">Inicio</a>
+    		<ul class="nav">
+	      		<li ng-class="{active: menusel == 'profile'}"><a href="#/cv/">CV</a></li>
+	      		<li ng-class="{active: menusel == 'search'}"><a href="#">Busqueda</a></li>
+	      		<li ng-class="{active: menusel == 'exit'}"><a href="{% url 'account_logout' %}">Salir</a></li>
+    		</ul> 		
+		</div>
+	</div>
+</div>
+<div class="padded-content">
+    <div id="main-content" class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="pending-bg" pendingbar>
+                    <div class="alert alert-warning">loading ...</div>
+                </div>
+            </div>
+        </div>
+    	<ng-view viewstate></ng-view>
+    	<div id="fb-root"></div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+<script src="{{ STATIC_URL }}lib/angular/angular.min.js"></script>
+<script src="{{ STATIC_URL }}lib/angular/angular-resource.min.js"></script>
+<script src="{{ STATIC_URL }}lib/angular-strap/angular-strap.min.js"></script>
+<script src="{{ STATIC_URL }}lib/underscore/underscore-min.js"></script>
+<script src="{{ STATIC_URL }}lib/angular/angular-cookies.min.js"></script>
+<script src="{{ STATIC_URL }}lib/restangular/restangular.min.js"></script>
+<script src="{{ STATIC_URL }}js/app.js"></script>	
+<script src="{{ STATIC_URL }}js/routes.js"></script>
+<script src="{{ STATIC_URL }}js/filters.js"></script>
+<script src="{{ STATIC_URL }}js/controllers.js"></script>
+<script src="{{ STATIC_URL }}js/services.js"></script>
+<script src="{{ STATIC_URL }}js/directives.js"></script>
+{% if user.is_authenticated %}
+	<script type="text/javascript">
+	app.run(function($rootScope, User) {
+		User.isAuthenticated = true;
+		User.id = {{ user.id }}
+		User.username = '{{ user }}';
+		//$rootScope.user = {{user_json|safe}};
+	});
+	</script>
+{% endif %}
+{% endblock footer %}

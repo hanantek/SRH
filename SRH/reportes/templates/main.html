@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es" ng-app="reports">
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css"/>
+	{% block header %}
+	{% endblock header %}
+</head>
+<body ng-controller="ReportController">
+	{% csrf_token %}
+
+	{% block content %}
+	{% endblock content%}
+	
+	<script src="{{ STATIC_URL }}lib/jquery/jquery-1.9.1.min.js"></script>
+	<script src="{{ STATIC_URL }}lib/bootstrap/bootstrap.min.js"></script>
+	<script src="{{ STATIC_URL }}lib/bootstrap/bootstrap-datepicker.js"></script>
+	<script src="{{ STATIC_URL }}lib/bootstrap/bootstrap-fileupload.min.js"></script>
+	<script src="{{ STATIC_URL }}lib/underscore/underscore-min.js"></script>
+	{% block footer %}
+	{% endblock footer %}
+</body>
+</html>

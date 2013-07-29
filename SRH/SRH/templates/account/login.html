@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account %}
+{% load url from future %}
+
+{% block title %}Ingreso{% endblock title %}
+
+{% block header_extra %}
+<meta name="description" content="">
+<meta name="author" content="">
+<style type="text/css">
+      /* Override some defaults */
+      html, body {
+        background-color: #eee;
+      }
+      body {
+        padding-top: 40px; 
+      }
+      .container {
+        width: 500px;
+      }
+
+      /* The white background content wrapper */
+      .container > .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px; 
+        -webkit-border-radius: 10px 10px 10px 10px;
+           -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+
+    .login-form {
+    margin-left: 65px;
+    }
+  
+    legend {
+    margin-right: -50px;
+    font-weight: bold;
+      color: #404040;
+    }
+
+</style>
+{% endblock header_extra %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+      <div class="row">
+        <div class="login-form">
+          <h1>Ingreso</h1>
+
+          {% if socialaccount.providers  %}
+          <p>Por favor ingrese con una de sus cuentas de redes sociales existentes. 
+
+          <div class="socialaccount_ballot">
+            <ul class="unstyled">
+              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+            </ul>
+          </div>
+
+          O, <a href="{{ signup_url }}">registrese</a> 
+          para usa una cuenta debajo</p>
+
+          {% include "socialaccount/snippets/login_extra.html" %}
+
+          {% endif %}
+
+          <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <button class="primaryAction btn dropdown-toggle" type="submit">{% trans "Sign In" %}</button>
+          </form>
+          <p><a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

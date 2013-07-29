@@ -1,0 +1,166 @@
+{% extends "main.html" %}
+
+{% block title %}
+Perfil
+{% endblock title %}
+
+{% block content %}
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="{% url 'reportes' %}">Reportes</a>
+    		<ul class="nav">
+	      		<li><a href="#">Inicio</a></li>
+	      		<li class="active"><a href="#">Perfil</a></li>
+	      		<li><a href="#">Salir</a></li>
+    		</ul> 		
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h4>Informacion Personal</h4>
+	<table class="table table-bordered table-striped">
+		<tr>
+			<td>
+			<div class="span3">
+				<strong>Nombres</strong></br>
+				<strong>Apellidos</strong></br>
+				<strong>Nacionalidad</strong></br>
+				<strong>Tipo Documento</strong></br>
+				<strong>Numero Documento</strong></br>
+				<strong>Genero</strong></br>			
+			</div>
+			</td>
+			<td>
+			<div class="span7">
+				{{personal.names}}</br>
+				{{personal.last_names}}</br>
+				{{personal.nationality}}</br>
+				{{personal.document_type}}</br>
+				{{personal.document_number}}</br>
+				{{personal.sex}}
+			</div>
+			</td>
+		</tr>
+	</div>
+	</table>
+
+	{% if formations %}
+	<h4>Estudios y formación</h4>
+	<div class="row-fluid">
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th>Institución</th>
+				<th>Educación</th>
+				<th>Grado</th>
+				<th>País</th>
+				<th>Ciudad</th>
+				<th>Inicio</th>
+				<th>Fín</th>
+				<th>Estudio actualmente</th>
+			</tr>
+			{% for formation in formations %}
+			<tr>
+				<td>{{formation.institution}}</td>
+				<td>{{formation.level_education}}</td>
+				<td>{{formation.grade}}</td>
+				<td>{{formation.country}}</td>
+				<td>{{formation.city}}</td>
+				<td>{{formation.date_start}}</td>
+				<td>{{formation.date_end}}</td>
+				<td>{{formation.today}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% endif %}
+
+	{% if experiences %}
+	<h4>Experiencia laboral</h4>
+	<div class="row-fluid">
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th>Posición</th>
+				<th>Empresa</th>
+				<th>Industria</th>
+				<th>Descripción</th>
+				<th>Pais</th>
+				<th>Ciudad</th>
+				<th>Inicio</th>
+				<th>Fín</th>
+				<th>Trabajo actualmente</th>
+			</tr>
+			{% for experience in experiences %}
+			<tr>
+				<td>{{experience.position}}</td>
+				<td>{{experience.company}}</td>
+				<td>{{experience.industry}}</td>
+				<td>{{experience.description}}</td>
+				<td>{{experience.country}}</td>
+				<td>{{experience.city}}</td>
+				<td>{{experience.date_start}}</td>
+				<td>{{experience.date_end}}</td>
+				<td>{{experience.today}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% endif %}
+
+	<div class="row-fluid">
+	{% if languages %}
+	<div class="span6">
+		<h4>Idiomas</h4>
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th>Idioma</th>
+				<th>Nivel</th>
+			</tr>
+			{% for language in languages %}
+			<tr>
+				<td>{{language.language}}</td>
+				<td>{{language.level}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% endif %}
+	{% if references %}
+	<div class="span6">
+		<h4>Referencias</h4>
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th>Empresa</th>
+				<th>Nombres</th>
+				<th>Teléfono</th>
+			</tr>
+			{% for reference in references %}
+			<tr>
+				<td>{{reference.company}}</td>
+				<td>{{reference.names}}</td>
+				<td>{{reference.phone}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% endif %}
+	</div>
+
+	{% if skills %}
+	<h4>Habilidad y destrezas</h4>
+	<div class="row-fluid">
+		<table class="table table-bordered table-striped span9">
+			<tr>
+				<th>Descripción</th>
+			</tr>
+			{% for skill in skills %}
+			<tr>
+				<td>{{skill.description}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	{% endif %}
+
+</div>
+{% endblock content %}

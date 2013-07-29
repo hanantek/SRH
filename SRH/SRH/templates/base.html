@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es" ng-app="srh">
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock title %}</title>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-datepicker.css"/>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css"/>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-fileupload.min.css"/>
+	{% block header_extra %}
+	{% endblock header_extra %}
+</head>
+<body ng-controller="AppController">
+	{% csrf_token %}
+	{% block content %}
+	{% endblock content%}
+	<script src="{{ STATIC_URL }}lib/jquery/jquery-1.9.1.min.js"></script>
+	<script src="{{ STATIC_URL }}lib/bootstrap/bootstrap.min.js"></script>
+	<script src="{{ STATIC_URL }}lib/bootstrap/bootstrap-datepicker.js"></script>
+	<script src="{{ STATIC_URL }}lib/bootstrap/bootstrap-fileupload.min.js"></script>
+	{% block footer %}
+	{% endblock footer %}
+</body>

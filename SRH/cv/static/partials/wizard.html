@@ -1,0 +1,121 @@
+<form name='cvform'>
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3>Registro de datos para la hoja de vida</h3>
+</div>
+<div class="modal-body">
+	<div>
+		<div class="btn-group">	
+			<button class="btn" ng-class="{'btn-primary':isCurrentStep(0)}" ng-click="setCurrentStep(0)">Uno</button>
+			<button class="btn" ng-class="{'btn-primary':isCurrentStep(1)}" ng-click="setCurrentStep(1)">Dos</button>
+		</div>	
+		<div ng-switch="getCurrentStep()" ng-animate="'wave'" class="slide-frame">
+			<div ng-switch-when="Uno" ng-form='step1'>
+				<fieldset ng-form='step1'>
+					<h4>Información personal</h4> 
+					<div class="control-group">  
+						<label class="control-label" for="personal.names">Nombres</label>  
+						<div class="controls">  
+							<input type="text" class="input-xlarge" id="personal.names" ng-model="personal.names" required>  
+						</div>  
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.last_names">Apellidos</label>  
+						<div class="controls">
+							<input type="text" class="input-xlarge" id="personal.last_names" ng-model="personal.last_names" required>  
+						</div>  
+					</div> 
+					<div class="control-group">  
+						<label class="control-label" for="personal.nationality">Nacionalidad</label>  
+						<div class="controls">
+							<select ng-model="personal.nationality" id="personal.nationality"
+								ng-options="item.id as item.name for item in itemsNationalities">
+							</select>
+						</div>
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.document_type">Tipo de documento</label>  
+						<div class="controls">
+							<select ng-model="personal.document_type" id="personal.document_type"
+								ng-options="item.id as item.document for item in itemsDocumenType">
+							</select>
+						</div>  
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.document_number">Numero de documento</label>  
+						<div class="controls">
+							<input type="text" class="input-xlarge" id="personal.document_number" ng-model="personal.document_number" required>  
+						</div>  
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.sex">Genero</label>  
+						<div class="controls">
+							<select ng-model="personal.sex" id="personal.sex"
+								ng-options="item.id as item.gender for item in itemsGender">
+							</select>
+						</div>  
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.civil_state">Estado civil</label>  
+						<div class="controls">
+							<select ng-model="personal.civil_state" id="personal.civil_state"
+								ng-options="item.id as item.state for item in itemsCivilState">
+							</select> 
+						</div>  
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.phone">Telefono</label>  
+						<div class="controls">
+							<input type="text" class="input-xlarge" id="personal.phone" ng-model="personal.phone" required>  
+						</div>  
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.mobile">Celular</label>  
+						<div class="controls">
+							<input type="text" class="input-xlarge" id="personal.mobile" ng-model="personal.mobile">  
+						</div>  
+					</div>
+					<div class="control-group input-append">  
+						<label class="control-label" for="personal.birth">Date birth</label>  
+						<div class="controls">
+							<input id="personal.birth" type="text" ng-model="personal.birth" data-date-format="yyyy-mm-dd" bs-datepicker>
+  <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+						</div>  
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.address">Dirección</label>  
+						<div class="controls">
+							<textarea rows="3" class="span5" id="personal.address" ng-model="personal.address" required></textarea>  
+						</div>  
+					</div>
+					<div class="control-group">  
+						<label class="control-label" for="personal.image">Imagen</label>  
+						<div class="controls">
+							<div class="fileupload fileupload-new" data-provides="fileupload">
+  <span class="btn btn-file"><span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" ng-model="personal.image" id="personal.image"/></span>
+  <span class="fileupload-preview"></span>
+  <a href="#/cv" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+</div>
+						</div>  
+					</div>
+				</fieldset>
+			</div>
+			<div ng-switch-when="Dos" ng-form='step2'>
+				<fieldset>
+					<h4>Resumen</h4>
+				</fieldset>  
+			</div>
+		</div>	
+	</div>
+</div>	
+<div class="modal-footer">
+	<div class="alert alert-info">
+  	<button type="button" class="close text-left" data-dismiss="alert">&times;</button>
+  	Verifique los siguientes formularios <span ng-show="step1.$valid">Uno</span> 
+  	<span ng-show="step2.$valid">Dos</span> <span ng-show="step3.$valid">Tres</span> 
+  	<span ng-show="step4.$valid">Cuatro</span> [[step1]]
+	</div>
+	<a class="btn" ng-click="handlePrevious()" ng-show="!isFirstStep()">Regresar</a>
+	<a class="btn" ng-click="handleNext(dismiss)">[[getNextLabel()]]</a>
+</div>
+</form>

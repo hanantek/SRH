@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load url from future %}
+{% load i18n %}
+
+{% block title %}{% trans "Signup" %}{% endblock title %}
+
+{% block header_extra %}
+<meta name="description" content="">
+<meta name="author" content="">
+<style type="text/css">
+      /* Override some defaults */
+      html, body {
+        background-color: #eee;
+      }
+      body {
+        padding-top: 40px; 
+      }
+      .container {
+        width: 500px;
+      }
+
+      /* The white background content wrapper */
+      .container > .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px; 
+        -webkit-border-radius: 10px 10px 10px 10px;
+           -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+
+	  .login-form {
+		margin-left: 65px;
+	  }
+	
+	  legend {
+		margin-right: -50px;
+		font-weight: bold;
+	  	color: #404040;
+	  }
+
+</style>
+{% endblock header_extra %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+      <div class="row">
+        <div class="login-form">
+        	<h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans %}Tienes una cuenta?. Porfavor <a href="{{ login_url }}">Ingresa aquí</a>.{% endblocktrans %}</p>
+          <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  			{% csrf_token %}
+  			{{ form.as_p }}
+  			{% if redirect_field_value %}
+  				<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  			{% endif %}
+  			<button type="submit" class="btn dropdown-toggle">{% trans "Sign Up" %} &raquo;</button>
+			</form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

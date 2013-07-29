@@ -1,0 +1,133 @@
+{% extends "main.html" %}
+
+{% block title %}
+Busqueda
+{% endblock title %}
+
+{% block header %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/icons.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/workspace.css"/>
+{% endblock header %}
+
+{% block content %}
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#">Reportes</a>
+    		<ul class="nav">
+	      		<li class="active"><a href="#">Inicio</a></li>
+	      		<li><a href="#">Perfil</a></li>
+	      		<li><a href="#">Salir</a></li>
+    		</ul> 		
+		</div>
+	</div>
+</div>
+<div class="container">
+    <div id="search_box_container"></div>
+  </br>
+    <span ng-hide="results"><h4>Sin resultados</h4></span>
+    <table class="table table-hover" ng-show="results">
+      <tr>
+        <th>Nombres y Apellidos</th>
+        <th>Teléfono/Celular</th>
+        <th>Informacion Personal</th>
+      </tr>
+      <tr ng-show="result.personales" ng-repeat="result in results">
+        <td><a href="/reportes/perfil/[[result.id]]">[[result.personales.names]] [[result.personales.last_names]]</a>
+		</td>
+        <td>[[result.personales.phone]] [[result.personales.mobil]]</td>
+        <td>
+          <span ng-show="result.personales" class="label label-success">Completo</span>
+          <span ng-hide="result.personales" class="label label-important">No disponible</span>
+        </td>
+      </tr>
+    </table>
+</div>
+{% endblock %}
+
+{% block footer %}
+<script src="{{ STATIC_URL }}lib/angular/angular.min.js"></script>
+<script src="{{ STATIC_URL }}vendor/jquery.ui.core.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}vendor/jquery.ui.widget.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}vendor/jquery.ui.position.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}vendor/jquery.ui.menu.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}vendor/jquery.ui.autocomplete.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}vendor/underscore-1.4.3.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}vendor/backbone-0.9.10.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/visualsearch.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/views/search_box.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/views/search_facet.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/views/search_input.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/models/search_facets.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/models/search_query.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/utils/backbone_extensions.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/utils/hotkeys.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/utils/jquery_extensions.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/utils/search_parser.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/utils/inflector.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{ STATIC_URL }}js/templates/templates.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+        window.visualSearch = VS.init({
+          container  : $('#search_box_container'),
+          query      : '',
+          showFacets : true,
+          /*unquotable : [
+            'nombres',
+          ],*/
+          callbacks  : {
+            search : function(query, searchCollection) {
+            	facets = searchCollection.map(function(item) {
+	            	item = item.toJSON();
+	            	if(item.category === "text") {
+	                	item.category = "query";
+	            	}
+	              	return {value: item.value, name: item.category};
+	            });
+	            //facets.push({name:"count",value:"15"});
+	            //facets.push({name:"sort",value:"trend"});
+	            params = $.param(facets);
+              //send to angular method searchQuery
+              var scope = angular.element('body').scope();
+              scope.queryParams = params;
+              scope.searchQuery();
+            },
+            valueMatches : function(category, searchTerm, callback) {
+              switch (category) {
+              	case 'nacionalidad':
+              		$.getJSON("/api/v1.0/nationality/",function(data) {
+                			collection = _.map(data, function(obj) {return {value: obj.id.toString(), label: obj.name}});
+                  			callback(collection);
+                  		});
+                	break;
+                case 'tipo-documento':
+                	$.getJSON("/api/v1.0/document/",function(data) {
+                			collection = _.map(data, function(obj) {return {value: obj.id.toString(), label: obj.document}});
+                  			callback(collection);
+                  		});
+                	break;
+                case 'estado-civil':
+                	$.getJSON("/api/v1.0/civilstate/",function(data) {
+                			collection = _.map(data, function(obj) {return {value: obj.id.toString(), label: obj.state}});
+                  			callback(collection);
+                  		});
+                	break;
+                case 'genero':
+                	$.getJSON("/api/v1.0/gender/",function(data) {
+                			collection = _.map(data, function(obj) {return {value: obj.id.toString(), label: obj.gender}});
+                  			callback(collection);
+                  		});
+                	break;
+              }
+            },
+            facetMatches : function(callback) {
+              callback(['nombres', 'apellidos', 'nacionalidad', 'tipo-documento',
+			   'estado-civil', 'genero']);
+            }
+          }
+        });
+      });
+</script>
+<script src="{{ STATIC_URL }}js/reports.js"></script>
+{% endblock footer %}
