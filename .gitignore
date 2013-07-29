@@ -1,2 +1,4 @@
 *.pyc
 SRH/SRH/static
+local_settings.py
+*.db
