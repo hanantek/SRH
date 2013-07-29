@@ -1,0 +1,8 @@
+syntax: glob
+SRH/static
+SRH/media
+local_settings.py
+*.pyc
+*~
+*.db
+.DS_Store
