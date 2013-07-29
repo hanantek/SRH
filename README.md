@@ -22,3 +22,12 @@ REQUIREMENTS
 * openpyxl
 
 
+DEMO
+===
+
+There's a demo at http://youtu.be/ZC6lqkum_gs
+
+CONTACT
+===
+
+info@hanantek.com
